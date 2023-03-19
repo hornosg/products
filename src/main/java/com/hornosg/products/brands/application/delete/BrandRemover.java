@@ -14,9 +14,9 @@ public class BrandRemover {
     @Autowired
     private BrandSpringDataRepository repository;
 
-    public void invoke(String brandId){
-        Brand brand = reader.invoke(brandId);
-        repository.deleteById(brandId);
+    public void invoke(String id){
+        Brand brand = reader.invoke(id);
+        repository.deleteById(id);
     }
 
 }

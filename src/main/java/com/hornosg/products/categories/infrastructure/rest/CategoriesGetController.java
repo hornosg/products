@@ -1,6 +1,6 @@
-package com.hornosg.products.brands.infrastructure.rest;
+package com.hornosg.products.categories.infrastructure.rest;
 
-import com.hornosg.products.brands.application.read.BrandReader;
+import com.hornosg.products.categories.application.read.CategoryReader;
 import com.hornosg.shared.infrastructure.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(BaseController.BASE_URI)
-public class BrandGetController extends BaseController{
+public class CategoriesGetController extends BaseController{
 
     @Autowired
-    private BrandReader reader;
+    private CategoryReader reader;
 
-    @GetMapping("/v1/brand/{id}")
+    @GetMapping("/v1/category/{id}")
     public ResponseEntity<?> readBrand(@PathVariable String id) {
         return ResponseEntity.ok(reader.invoke(id));
     }
 
-    @GetMapping("/v1/brands")
+    @GetMapping("/v1/categories")
     public ResponseEntity<?> listBrands() {
         return ResponseEntity.ok(reader.list());
     }

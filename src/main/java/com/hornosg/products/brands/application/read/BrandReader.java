@@ -16,8 +16,8 @@ public class BrandReader {
     @Autowired
     private BrandSpringDataRepository repository;
 
-    public Brand invoke(String brandId){
-        Optional<Brand> brand = repository.findById(brandId);
+    public Brand invoke(String id){
+        Optional<Brand> brand = repository.findById(id);
         if (brand.isEmpty()){
             throw new BrandDoesNotExistsException();
         }

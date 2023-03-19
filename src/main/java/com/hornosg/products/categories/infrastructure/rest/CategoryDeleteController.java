@@ -1,6 +1,6 @@
-package com.hornosg.products.brands.infrastructure.rest;
+package com.hornosg.products.categories.infrastructure.rest;
 
-import com.hornosg.products.brands.application.delete.BrandRemover;
+import com.hornosg.products.categories.application.delete.CategoryRemover;
 import com.hornosg.shared.infrastructure.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(BaseController.BASE_URI)
-public class BrandDeleteController extends BaseController{
+public class CategoryDeleteController extends BaseController{
 
     @Autowired
-    private BrandRemover remover;
+    private CategoryRemover remover;
 
-    @DeleteMapping("/v1/brand/{id}")
+    @DeleteMapping("/v1/category/{id}")
     public ResponseEntity<?> deleteBrand(@PathVariable String id) {
         remover.invoke(id);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
