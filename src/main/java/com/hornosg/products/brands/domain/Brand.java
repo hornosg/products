@@ -4,8 +4,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import java.util.UUID;
-
 @Document(collection = "brands")
 public class Brand {
 

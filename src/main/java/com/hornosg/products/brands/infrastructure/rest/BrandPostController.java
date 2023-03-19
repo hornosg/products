@@ -20,7 +20,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(BaseController.BASE_URI)
-public class BrandPostController {
+public class BrandPostController extends BaseController{
 
     @Autowired
     private BrandCreator creator;
@@ -33,16 +33,8 @@ public class BrandPostController {
             @Valid @RequestBody NewBrandCommand requestBody,
             BindingResult result
     ) {
-        if (result.hasErrors()) {
-            Map<String, String> errors = new HashMap<>();
-            result.getFieldErrors().forEach( error -> {
-                errors.put(
-                        error.getField(),
-                        String.format("%s %s", error.getField(), error.getDefaultMessage())
-                );
-            });
-            return ResponseEntity.badRequest().body(errors);
-        }
+        Map<String, String> errors = hasErrors(result);
+        if (errors != null) return ResponseEntity.badRequest().body(errors);
 
         creator.invoke(requestBody);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -53,16 +45,8 @@ public class BrandPostController {
             @Valid @RequestBody NewBrandsCommand requestBody,
             BindingResult result
     ) {
-        if (result.hasErrors()) {
-            Map<String, String> errors = new HashMap<>();
-            result.getFieldErrors().forEach( error -> {
-                errors.put(
-                        error.getField(),
-                        String.format("%s %s", error.getField(), error.getDefaultMessage())
-                );
-            });
-            return ResponseEntity.badRequest().body(errors);
-        }
+        Map<String, String> errors = hasErrors(result);
+        if (errors != null) return ResponseEntity.badRequest().body(errors);
 
         bulkCreator.invoke(requestBody);
         return ResponseEntity.status(HttpStatus.CREATED).build();
