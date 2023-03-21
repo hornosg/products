@@ -12,7 +12,14 @@ public class CategoryUpdater {
     private CategorySpringDataRepository repository;
 
     public void invoke(String id, UpdateCategoryCommand command){
-        repository.save(new Category(id, command.parentId, command.name));
+        repository.save(
+                new Category(
+                        id,
+                        command.tenantId,
+                        command.parentId,
+                        command.name
+                )
+        );
     }
 
 }

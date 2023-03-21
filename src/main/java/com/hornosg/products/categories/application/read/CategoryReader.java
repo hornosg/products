@@ -24,8 +24,8 @@ public class CategoryReader {
         return category.get();
     }
 
-    public List<Category> list(){
-        List<Category> categories = (List<Category>) repository.findAll();
+    public List<Category> list(String tenantId){
+        List<Category> categories = repository.findByTenantId(tenantId);
         if (categories.size() == 0){
             throw new NoDataException();
         }

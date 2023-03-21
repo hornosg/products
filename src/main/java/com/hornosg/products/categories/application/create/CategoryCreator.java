@@ -17,6 +17,7 @@ public class CategoryCreator {
         repository.save(
                 new Category(
                     UUID.randomUUID().toString(),
+                    command.tenantId,
                     command.parentId,
                     command.name
                 )

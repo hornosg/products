@@ -5,7 +5,18 @@ import jakarta.validation.constraints.NotEmpty;
 public class NewBrandCommand {
 
     @NotEmpty
+    public String tenantId;
+
+    @NotEmpty
     public String name;
+
+    public String getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(String tenantId) {
+        this.tenantId = tenantId;
+    }
 
     public String getName() {
         return name;

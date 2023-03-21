@@ -12,7 +12,13 @@ public class BrandUpdater {
     private BrandSpringDataRepository repository;
 
     public void invoke(String brandId, UpdateBrandCommand command){
-        repository.save(new Brand(brandId, command.name));
+        repository.save(
+                new Brand(
+                        brandId,
+                        command.tenantId,
+                        command.name
+                )
+        );
     }
 
 }

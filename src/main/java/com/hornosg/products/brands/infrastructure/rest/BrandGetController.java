@@ -21,8 +21,9 @@ public class BrandGetController extends BaseController{
         return ResponseEntity.ok(reader.invoke(id));
     }
 
-    @GetMapping("/v1/brands")
-    public ResponseEntity<?> listBrands() {
-        return ResponseEntity.ok(reader.list());
+    @GetMapping("/v1/brands/{tenantId}")
+    public ResponseEntity<?> listBrands(@PathVariable String tenantId) {
+
+        return ResponseEntity.ok(reader.list(tenantId));
     }
 }

@@ -14,7 +14,13 @@ public class BrandCreator {
     private BrandSpringDataRepository repository;
 
     public void invoke(NewBrandCommand command){
-        repository.save(new Brand(UUID.randomUUID().toString(), command.name));
+        repository.save(
+                new Brand(
+                        UUID.randomUUID().toString(),
+                        command.tenantId,
+                        command.name
+                )
+        );
     }
 
 }

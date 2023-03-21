@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotEmpty;
 
 public class NewCategoryCommand {
 
+    @NotEmpty
+    public String tenantId;
     public String parentId;
 
     @NotEmpty

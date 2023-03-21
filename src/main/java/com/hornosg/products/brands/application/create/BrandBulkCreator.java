@@ -15,7 +15,13 @@ public class BrandBulkCreator {
 
     public void invoke(NewBrandsCommand brands){
         brands.getBrands().forEach( brandName -> {
-            repository.save(new Brand(UUID.randomUUID().toString(), brandName));
+            repository.save(
+                    new Brand(
+                            UUID.randomUUID().toString(),
+                            brands.tenantId,
+                            brandName
+                    )
+            );
         });
     }
 

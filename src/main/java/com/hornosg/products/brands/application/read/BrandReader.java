@@ -24,8 +24,8 @@ public class BrandReader {
         return brand.get();
     }
 
-    public List<Brand> list(){
-        List<Brand> brands = (List<Brand>) repository.findAll();
+    public List<Brand> list(String tenantId){
+        List<Brand> brands = (List<Brand>) repository.findByTenantId(tenantId);
         if (brands.size() == 0){
             throw new NoDataException();
         }

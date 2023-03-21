@@ -21,8 +21,8 @@ public class CategoriesGetController extends BaseController{
         return ResponseEntity.ok(reader.invoke(id));
     }
 
-    @GetMapping("/v1/categories")
-    public ResponseEntity<?> listBrands() {
-        return ResponseEntity.ok(reader.list());
+    @GetMapping("/v1/categories/{tenantId}")
+    public ResponseEntity<?> listBrands(@PathVariable String tenantId) {
+        return ResponseEntity.ok(reader.list(tenantId));
     }
 }
